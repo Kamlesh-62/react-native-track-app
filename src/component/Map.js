@@ -1,11 +1,12 @@
+// import react
 import React, {useContext} from "react";
-import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
+import { StyleSheet, ActivityIndicator } from "react-native";
 import MapView, {Polyline, Circle} from "react-native-maps";
+// import context
 import { Context as LocationContext } from "../context/LocationContext";
 
 const Map = () => {
     const {state: {currentLocation, locations}} =useContext(LocationContext);
-
 
     if(!currentLocation){
         return <ActivityIndicator size='large' style={{marginTop: 200}} />;
@@ -31,7 +32,7 @@ const Map = () => {
 }
 const styles = StyleSheet.create({
     map:{
-        height:400
+        height:500
     }
 })
 export default Map;

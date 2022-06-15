@@ -16,7 +16,17 @@ import { Provider as LocationProvider} from './src/context/LocationContext';
 import { Provider as TrackProvider } from './src/context/TrackContext';
 import { setNavigator } from './src/navigationRef';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
+import { Entypo } from '@expo/vector-icons';
 
+
+const trackListFlow = createStackNavigator({
+  TrackList: TrackListScreen,
+  TrackDetail: TrackDetailScreen
+})
+trackListFlow.navigationOptions={
+  title: 'Tracks',
+  tabBarIcon: <Entypo name="list" size={24} color="black" />,
+}
 
 const switchNavigator = createSwitchNavigator({
   ResolveAuth: ResolveAuthScreen,
@@ -25,10 +35,7 @@ const switchNavigator = createSwitchNavigator({
     Signin: SigninScreen
   }),
   mainFlow: createBottomTabNavigator({
-    trackListFlow: createStackNavigator({
-      TrackList: TrackListScreen,
-      TrackDetail: TrackDetailScreen
-    }),
+    trackListFlow,
     TrackCreate:TrackCreateScreen,
     Profile: ProfileScreen
 

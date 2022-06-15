@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import {  Text, StyleSheet } from 'react-native';
 import { Context } from '../context/TrackContext';
 import MapView, {Polyline} from 'react-native-maps';
+import Spacer from '../component/Spacer';
 
 const TrackDetailScreen = ({navigation}) => {
     const {state} = useContext(Context)
@@ -11,7 +12,9 @@ const TrackDetailScreen = ({navigation}) => {
     const initialCoords = tracks.locations[0].coords;
     return (
         <>
-            <Text>{tracks.name}</Text>
+            <Spacer />
+            <Text style={styles.text}>{tracks.name}</Text>
+            <Spacer />
             <MapView
             initialRegion={{
                 longitudeDelta: 0.01,
@@ -19,14 +22,17 @@ const TrackDetailScreen = ({navigation}) => {
                 ...initialCoords
             }}
             style={styles.map}>
-                <polyline coordinates={tracks.locations.map(loc => loc.coords)} />
+                <Polyline coordinates={tracks.locations.map(loc => loc.coords)} />
             </MapView>
         </>
     )
 }
 const styles = StyleSheet.create({
     map:{
-        height: 300
+        height: 400
+    },
+    text:{
+        fontSize: 30
     }
 })
 

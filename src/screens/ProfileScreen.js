@@ -1,16 +1,22 @@
+// import from react
 import React, { useContext } from 'react';
 import {View, StyleSheet} from 'react-native';
 import { Button, Text } from 'react-native-elements';
-import Spacer from '../component/Spacer';
-import { Context } from '../context/AuthContext';
 import { SafeAreaView } from 'react-navigation';
+// import spacer
+import Spacer from '../component/Spacer';
+// import context
+import { Context } from '../context/AuthContext';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const ProfileScreen = () => {
     const { signout } = useContext(Context)
     return(
         <View>
             <SafeAreaView forceInset={{top: 'always'}} />
-            <Text style={styles.text}> Profile</Text>
+            <Spacer />
+            <Text style={styles.text }> Profile</Text>
+            <Spacer />
             <Spacer>
                 <Button
                 title='Sign Out'
@@ -19,9 +25,14 @@ const ProfileScreen = () => {
         </View>
     )
 }
+ProfileScreen.navigationOptions = {
+    title: 'Profile',
+    tabBarIcon: <MaterialIcons name="account-circle" size={24} color="black" />
+}
 const styles = StyleSheet.create({
     text:{
-        fontSize: 48
+        fontSize: 48,
+        textAlign: 'center'
     }
 })
 
